@@ -1,0 +1,31 @@
+{
+  "name": "flashcards",
+  "version": "1.0.0",
+  "description": "flashcards-like study tool",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.1",
+    "multer": "^1.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h223chen/flashcards.git"
+  },
+  "keywords": [
+    "flashcards",
+    "study",
+    "tool"
+  ],
+  "author": "h223chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h223chen/flashcards/issues"
+  },
+  "homepage": "https://github.com/h223chen/flashcards#readme"
+}
