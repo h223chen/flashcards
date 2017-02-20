@@ -1,0 +1,16 @@
+{
+  "name": "flashcards",
+  "description": "flashcards-like study tool",
+  "main": "index.js",
+  "authors": [
+    "h223chen"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "flashcards",
+    "study",
+    "tool"
+  ],
+  "homepage": "https://github.com/h223chen/flashcards",
+  "private": true
+}
