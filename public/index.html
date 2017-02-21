@@ -1,0 +1,15 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="controllers/controller.js"></script>
+  </head>
+  <body>
+    <div ng-controller="mainCtrl">
+    	<table ng-if="searchList.length>0" st-table="rows" st-safe-src="searchList" class='table'>
+			    	
+    	</table>
+    	
+    </div>
+  </body>
+</html>
