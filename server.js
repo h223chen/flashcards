@@ -55,7 +55,7 @@ init();
 
 app.get('/api/get/:name', function(req, res) {
 	var name = req.params.name;
-	f.info(sourceFiles[name + ".csv"]);
+	// f.info(sourceFiles[name + ".csv"]);
 	res.send(sourceFiles[name + ".csv"]);
 });
 

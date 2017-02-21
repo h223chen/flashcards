@@ -6,20 +6,21 @@ app.controller('mainCtrl', [
 	'$http',
 	function($scope, $http) {
 		console.log("HELLO");
-		
-		
-		$http.get('/api/get/WinterDrugs', function(req, res) {
-			if (res.length <= 0) {
+				
+		$http.get('/api/get/WinterDrugs').then(function(res) {
+			console.log(res);
+			var data = res.data;
+			if (data.length <= 0) {
 				return;
 			}
 
-			var firstLine = res[0].split(',');
+			var firstLine = data[0].split(',');
 			var numColumns = firstLine.length;
 			
-			for (var i=1; i< res.length; i++) {
-				var line = res[i].split(',');
-				
-				
+			for (var i=1; i< data.length; i++) {
+				var line = data[i].split(',');
+
+				console.log(line);
 			}
 		});
 	}
