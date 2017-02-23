@@ -22,14 +22,10 @@ app.controller('mainCtrl', [
 			
 			for (var i=1; i< data.length; i++) {
 				var line = data[i].split(',');
-
-				console.log(line);
 			}
 			var answer = randomizer(1,data.length); //index of answer in data
-			console.log(answer);
 			var choices = [];
 			var answerloc = randomizer(0,5); //where answer will be placed in choices
-			console.log(answerloc);
 
 			for (var i=0; i<5; i++){
 				if (i==answerloc){
@@ -41,10 +37,13 @@ app.controller('mainCtrl', [
 			}
 			console.log(choices);
 			for (var i=0;i<$scope.count;i++){
-				$scope.questions.push({
+				var question = {
     				"question": "string here",
     				"answerChoices": choices
-				});
+				};
+				console.log(question);
+
+				$scope.questions.push(question);				
 				$scope.answers[i] = answer;
 			}
 		});

@@ -3,13 +3,22 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     <script src="controllers/controller.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   </head>
   <body>
     <div ng-controller="mainCtrl">
-    	<table ng-if="searchList.length>0" st-table="rows" st-safe-src="searchList" class='table'>
-			    	
-    	</table>
-    	
+      <div ng-repeat="question in questions track by $index">
+          {{question.question}}
+          <div ng-repeat="answer in question.answerChoices">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="selectedAnswer" value="chicken" ng-model="answers[$index]">
+                    {{answer}}
+                </label>
+            </div>
+            
+          </div>
+      </div>
     </div>
   </body>
 </html>
