@@ -11,7 +11,7 @@
         <li ng-repeat="question in questions">
             <strong class="question">{{question.question}}</strong>
 
-            <ul id="question_{{$parent.$index}}">
+            <ul style="list-style: none" id="question_{{$parent.$index}}">
               <li ng-repeat="answer in question.answerChoices">
                   <label>
                       <input type="radio" id="question_{{$parent.$index}}_answer_{{$index}}" name="question_{{$parent.$index}}_answers" value="{{answer}}" ng-model="answers[$parent.$index]"/>
