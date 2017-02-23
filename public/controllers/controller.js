@@ -23,20 +23,22 @@ app.controller('mainCtrl', [
 			for (var i=1; i< data.length; i++) {
 				var line = data[i].split(',');
 			}
-			var answer = randomizer(1,data.length); //index of answer in data
+			var answer;
 			var choices = [];
 			var answerloc = randomizer(0,5); //where answer will be placed in choices
 
-			for (var i=0; i<5; i++){
-				if (i==answerloc){
-					choices[i]=answer;
-				}
-				else{
-					choices[i]=randomizer(1,data.length);
-				}
-			}
-			console.log(choices);
 			for (var i=0;i<$scope.count;i++){
+				answer = randomizer(1,data.length); //index of answer in data
+				for (var j=0; j<5; j++){
+					if (j==answerloc){
+						choices[j]=answer;
+					}
+					else{
+						choices[j]=randomizer(1,data.length);
+					}
+				}
+				console.log(choices);
+			
 				var question = {
     				"question": "string here",
     				"answerChoices": choices
