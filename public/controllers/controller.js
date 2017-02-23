@@ -35,43 +35,50 @@ app.controller('mainCtrl', [
 			}
 
 			var firstLine = data[0].split(',');
-			//var numColumns = firstLine.length;
+			var numColumns = firstLine.length;
 			
 			
 			for (var i=1; i< data.length; i++) {
 				var line = data[i].split(',');
 			}
 			
-			
-			var answerloc = randomizer(0,5); //where answer will be placed in choices
+			var colTitles = data[0].split('|');
 
 			for (var i=0;i<$scope.count;i++){
 				var choices = [];
-				var ansType = randomizer(0, data[i].split('|').length - 1);
-                var choiceType = randomizer(0, data[i].split('|').length - 1);
+				var ansType = randomizer(0, data[i].split('|').length - 1); //Determines reference column of description in question
+                var choiceType = randomizer(0, data[i].split('|').length - 1); //Determines reference column of choices
+                var answerloc = randomizer(0,5); //where answer will be placed in choice
                 while (ansType==choiceType) {
                     choiceType = randomizer(0, data[i].split('|').length - 1);
                 }				
 				for (var j=0; j<5; j++){
-					var index = randomizer(1, data.length); //index of answer in data
-
-					while (choices.indexOf(index) > -1) {
-						index = randomizer(1, data.length);
+					var index = randomizer(1, data.length-1); //index of answer in data
+					var ansString = data[index].split('|')[choiceType];
+					if (answerloc==j){
+						var answerIndex = index;
 					}
-					choices[j] = data[index].split('|')[choiceType];
+					while (choices.indexOf(ansString) > -1) {
+						index = randomizer(1, data.length-1);
+						ansString = data[index].split('|')[choiceType];
+					}
+					choices[j] = ansString;
 				}
 			
+				var qNum = i+1
 				var question = {
-					question: "string here " + i,
+					question: "Question " + qNum + ": Which of the following is the " + colTitles[choiceType] + " that matches the following " + colTitles[ansType] + ": " + data[answerIndex].split('|')[ansType] + "?",
 					answerChoices: choices 
 				};				
 				console.log(question.answerChoices);
+				console.log(answerIndex);
 
 				$scope.questions[i] = question;
 				$scope.answers[i] = answerloc;
 			}
 
 			console.log($scope.questions);
+			console.log($scope.answers);
 		});
 	}
 ]);
