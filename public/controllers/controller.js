@@ -6,6 +6,9 @@ app.controller('mainCtrl', [
 	'$http',
 	function($scope, $http) {
 		console.log("HELLO");
+		$scope.questions = [];
+		$scope.answers = [];
+		$scope.count = 10;
 
 		$http.get('/api/get/WinterDrugs').then(function(res) {
 			console.log(res);
@@ -22,7 +25,7 @@ app.controller('mainCtrl', [
 
 				console.log(line);
 			}
-			var answer = randomizer(1,data.length); //index of answer
+			var answer = randomizer(1,data.length); //index of answer in data
 			console.log(answer);
 			var choices = [];
 			var answerloc = randomizer(0,5); //where answer will be placed in choices
@@ -37,10 +40,30 @@ app.controller('mainCtrl', [
 				}
 			}
 			console.log(choices);
+			for (var i=0;i<$scope.count;i++){
+				$scope.questions.push({
+    				"question": "string here",
+    				"answerChoices": choices
+				});
+				$scope.answers[i] = answer;
+			}
 		});
 
 		var randomizer = function(low, high){
 			return Math.trunc((Math.random()*(high-low))+low);
+		}
+
+		var checkAns = function(submittedAns){
+			var score = [];
+			for (var i=0;i<selections;i++){
+				if (input[i]==answers[i]){
+					score[i]=true;
+				}
+				else{
+					score[i]=false;
+				}
+			}
+			return score;
 		}
 	}
 ]);
