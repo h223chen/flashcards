@@ -58,7 +58,7 @@ app.controller('mainCtrl', [
 					while (choices.indexOf(index) > -1) {
 						index = randomizer(1, data.length);
 					}
-					choices = data[index].split('|');
+					choices[j] = data[index].split('|');
 				}
 			
 				var question = {
