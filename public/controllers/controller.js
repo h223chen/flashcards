@@ -35,7 +35,7 @@ app.controller('mainCtrl', [
 			}
 
 			var firstLine = data[0].split(',');
-			var numColumns = firstLine.length;
+			//var numColumns = firstLine.length;
 			
 			
 			for (var i=1; i< data.length; i++) {
@@ -47,10 +47,10 @@ app.controller('mainCtrl', [
 
 			for (var i=0;i<$scope.count;i++){
 				var choices = [];
-				var ansType = randomizer(0, data[i].length - 1);
-                var choiceType = randomizer(0, data[i].length - 1);
+				var ansType = randomizer(0, data[i].split('|').length - 1);
+                var choiceType = randomizer(0, data[i].split('|').length - 1);
                 while (ansType==choiceType) {
-                    choiceType = randomizer(0, data[i].length - 1);
+                    choiceType = randomizer(0, data[i].split('|').length - 1);
                 }				
 				for (var j=0; j<5; j++){
 					var index = randomizer(1, data.length); //index of answer in data
@@ -58,7 +58,7 @@ app.controller('mainCtrl', [
 					while (choices.indexOf(index) > -1) {
 						index = randomizer(1, data.length);
 					}
-					choices[j] = data[index].split('|');
+					choices[j] = data[index].split('|')[choiceType];
 				}
 			
 				var question = {
