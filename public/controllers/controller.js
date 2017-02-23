@@ -10,46 +10,6 @@ app.controller('mainCtrl', [
 		$scope.answers = [];
 		$scope.count = 10;
 
-		$http.get('/api/get/WinterDrugs').then(function(res) {
-			console.log(res);
-			var data = res.data;
-			if (data.length <= 0) {
-				return;
-			}
-
-			var firstLine = data[0].split(',');
-			var numColumns = firstLine.length;
-			
-			for (var i=1; i< data.length; i++) {
-				var line = data[i].split(',');
-			}
-			var answer;
-			var choices = [];
-			var answerloc = randomizer(0,5); //where answer will be placed in choices
-
-			for (var i=0;i<$scope.count;i++){
-				answer = randomizer(1,data.length); //index of answer in data
-				for (var j=0; j<5; j++){
-					if (j==answerloc){
-						choices[j]=answer;
-					}
-					else{
-						choices[j]=randomizer(1,data.length);
-					}
-				}
-				console.log(choices);
-			
-				var question = {
-    				"question": "string here",
-    				"answerChoices": choices
-				};
-				console.log(question);
-
-				$scope.questions.push(question);				
-				$scope.answers[i] = answer;
-			}
-		});
-
 		var randomizer = function(low, high){
 			return Math.trunc((Math.random()*(high-low))+low);
 		}
@@ -66,5 +26,51 @@ app.controller('mainCtrl', [
 			}
 			return score;
 		}
+
+		$http.get('/api/get/WinterDrugs').then(function(res) {
+			console.log(res);
+			var data = res.data;
+			if (data.length <= 0) {
+				return;
+			}
+
+			var firstLine = data[0].split(',');
+			var numColumns = firstLine.length;
+			
+			
+			for (var i=1; i< data.length; i++) {
+				var line = data[i].split(',');
+			}
+			
+			
+			var answerloc = randomizer(0,5); //where answer will be placed in choices
+
+			for (var i=0;i<$scope.count;i++){
+				var choices = [];				
+				for (var j=0; j<5; j++){
+					var index = randomizer(1,data.length); //index of answer in data		
+
+					while (choices.indexOf(index) > -1) {
+						index = randomizer(1,data.length);
+					}
+					choices[j] = index;
+				}
+			
+				var question = {
+					question: "string here " + i,
+					answerChoices: choices 
+				};				
+				console.log(question.answerChoices);
+
+				$scope.questions[i] = question;
+				$scope.answers[i] = answerloc;
+			}
+
+			console.log($scope.questions);
+
+			
+		});
+
+		
 	}
 ]);
