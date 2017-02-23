@@ -1,41 +1,41 @@
-Drug Name,Use,MOA,Toxicities
-Abciximab,Anticoagulant (Glycprotein IIB/IIA receptor antagonist),Antibody to GP IIB/IIA blocking fibrinogen and aggregation,"Hypotension, nausea, bleeding"
-Acetezolemide,Carbonic Anhydrase Inhibitor (diuretic),Prevents reuptake of HCO3- at proximal tubule via CA,"Acidosis, malaise, confusion, sulfa allergy, hypokalemia"
-Alteplase,Anticoagulant (Thrombolytic/Fibrinolytic),Activates plasmin to break down fibrin within coagulant,Bleeding - esp intracranial hemorrhage
-Amiloride,Diuretic (K+ sparing),Blocks Na+ channels,Hyperkalemia
-Amiodarone,Anti-arrhythmic (K+ channel blocker),"Block efflux of K+, prolonging repolarization","Photosensitivity, thyroid abnormalities, corneal deposits"
-Apixaban,Anticoagulant (Factor X inhibitor),Inhibit active factor X in coagulation pathway,"Bleeding, back pain, pruritis, allergy"
-Aspirin,Anticoagulant (Antiplatelet),Inhibits formation of cox1/2 and TXA2 synth in platelet,"Hemorrhage, allergic reactions"
-Bumetanide,Loop Diuretic,Blocks Na+/Cl-/K+ transporter in ascending loop,"Alkalosis, trans nerve deafness, deafness, hyperuricemia"
-Chlorthalidone,Thiazide Diuretic,Blocks Na+/Cl- cotransporter in distal tubule,"Hyperuricemia, hypokalemia, sulfa sensitivity"
-Cilostazol,Anticoagulant (Antiplatelet),"Inhibit phosphodiesterase, TXA2 synth, or adenosine uptake","GI upset/ulcer, dizziness, headache, hemorrhage"
-Clopidogrel,Anticoagulant (Adenosine receptor antagonist),"Block ADP receptors, preventing platelet aggregation","GI upset/ulcer, bleeding, agranulocytosis"
-Dabigatran extexilate,Anticoagulant (Thrombin Inhibitor),Inhibits thrombin in coagulation pathway,"Bleeding, dyspepsia, allergy"
-Dalteparin,Anticoagulant (heparin-like),Act with anti-thrombin III to inactivate clotting factors,"hemorrhage, mild thrombocytopenia, AT III depl"
-Diltiazem,Anti-arrhythmic (Ca2+ channel blocker),Blocks Ca2+ influx at vasculature and pacemakers,"Reflex tachycardia, constipation, hypotension"
-Dipyramidamole,Anticoagulant (Antiplatelet),"Inhibit phosphodiesterase, TXA2 synth, or adenosine uptake","GI upset/ulcer, dizziness, headache, hemorrhage"
-Disopyramide,Anti-arrhythmic (Na+ channel blocker),"Block Na+ and K+ channels, slowing firing, incr threshold","Dryness, mydriasis, cycloplegia, heart failure"
-Edoxaban,Anticoagulant (Factor X inhibitor),Inhibit active factor X in coagulation pathway,"Bleeding, back pain, pruritis, allergy"
-Eplernone,Diuretic (K+ sparing),Antagonizes aldosterone receptor,Hyperkalemia
-Epoprostenol,Anticoagulant (Prostanoid receptor agonist),"Binds to prostacyclin site, incr cAMP and decr ADP release","Flushing, hypotension, headache"
-Flecainide,Anti-arrhythmic (Na+ channel blocker),"Slowly block Na+ channels, max phase 0 depression","Blurred vision, dizziness, nausea"
-Furosemide,Loop Diuretic,Blocks Na+/Cl-/K+ transporter in ascending loop,"Alkalosis, trans nerve deafness, deafness, hyperuricemia"
-Glycerol,Diuretic (Osmotic),"Filtered through kidneys, increase water excretion","Volume loading, tissue dehydration"
-Heparin,Anticoagulant,Act with anti-thrombin III to inactivate clotting factors,"Hemorrhage, mild thrombocytopenia, AT III depl"
-Hydrochlorothiazide,Thiazide Diuretic,Blocks Na+/Cl- cotransporter in distal tubule,"Hyperuricemia, hypokalemia, sulfa sensitivity"
-Indapamidine,Thiazide Diuretic,Blocks Na+/Cl- cotransporter in distal tubule,"Hyperuricemia, hypokalemia, sulfa sensitivity"
-Lidocaine,Anti-arrhythmic (Na+ channel blocker),"Block active and inactive Na+ channels, incr threshold","Sedation, agitation, muscle twitching, convulsions"
-Mannitol,Diuretic (Osmotic),"Filtered through kidneys, increase water excretion","Volume loading, tissue dehydration"
-Propranolol,Anti-arrhythmic (Beta blocker),"Block B-adrenergic receptors, decr rate and contractility","Bronchospasm, bradycardia and arrest"
-Quinidine,Anti-arrhythmic (Na+ channel blocker),"Blocks Na+ channels, slowing firing, incr threshold","Arrhythmia, muscle depolarization, NVD, psychosis"
-Rivaroxaban,Anticoagulant (Factor X inhibitor),Inhibit active factor X in coagulation pathway,"Bleeding, back pain, pruritis, allergy"
-Sotalol,Anti-arrhythmic (Beta blocker & K+ channel blocker),Block B-adrenergic receptors and prolonging repolarization,"Bronchospasm, thyroid abnormalities, corneal deposits"
-Spironolactone,Diuretic (K+ sparing),Antagonizes aldosterone receptor,"Gynecomastia, decr libido, impotence, GIT upset, hyperK"
-Streptokinase,Anticoagulant (Thrombolytic/Fibrinolytic),Activates plasmin to break down fibrin within coagulant,Bleeding - esp intracranial hemorrhage
-Tenecteplase,Anticoagulant (Thrombolytic/Fibrinolytic),Activates plasmin to break down fibrin within coagulant,Bleeding - esp intracranial hemorrhage
-Ticlopidine,Anticoagulant (Adenosine receptor antagonist),"Block ADP receptors, preventing platelet aggregation","GI upset/ulcer, bleeding, agranulocytosis"
-Tinzaparin,Anticoagulant (heparin-like),Act with anti-thrombin III to inactivate clotting factors,"hemorrhage, mild thrombocytopenia, AT III depl"
-Tirofiban,Anticoagulant (Glycprotein IIB/IIA receptor antagonist),Binds to GP IIB/IIA receptors to inhibit platelet aggregation,"Bradycardia, pelvic pain, edema, bleeding"
-Triamterene,Diuretic (K+ sparing),Block Na+/K+ exchange by blocking Na+ channels by lumen,Hyperkalemia
-Verapamil,Anti-arrhythmic (Ca2+ channel blocker),"Blocks Ca2+ influx at SA and AV node, decr conduction","Reflex tachycardia, constipation, hypotension"
-Warfarin,Anticoagulant (Vitamin K antagonist),Prevents foirmation of coagulation factors,"Hemorrhage, NVD, tertogenic, rashes"
+Drug Name|Use|MOA|Toxicities
+Abciximab|Anticoagulant (Glycprotein IIB/IIA receptor antagonist)|Antibody to GP IIB/IIA blocking fibrinogen and aggregation|Hypotension, nausea, bleeding
+Acetezolemide|Carbonic Anhydrase Inhibitor (diuretic)|Prevents reuptake of HCO3- at proximal tubule via CA|Acidosis, malaise, confusion, sulfa allergy, hypokalemia
+Alteplase|Anticoagulant (Thrombolytic/Fibrinolytic)|Activates plasmin to break down fibrin within coagulant|Bleeding - esp intracranial hemorrhage
+Amiloride|Diuretic (K+ sparing)|Blocks Na+ channels|Hyperkalemia
+Amiodarone|Anti-arrhythmic (K+ channel blocker)|Block efflux of K+, prolonging repolarization|Photosensitivity, thyroid abnormalities, corneal deposits
+Apixaban|Anticoagulant (Factor X inhibitor)|Inhibit active factor X in coagulation pathway|Bleeding, back pain, pruritis, allergy
+Aspirin|Anticoagulant (Antiplatelet)|Inhibits formation of cox1/2 and TXA2 synth in platelet|Hemorrhage, allergic reactions
+Bumetanide|Loop Diuretic|Blocks Na+/Cl-/K+ transporter in ascending loop|Alkalosis, trans nerve deafness, deafness, hyperuricemia
+Chlorthalidone|Thiazide Diuretic|Blocks Na+/Cl- cotransporter in distal tubule|Hyperuricemia, hypokalemia, sulfa sensitivity
+Cilostazol|Anticoagulant (Antiplatelet)|Inhibit phosphodiesterase, TXA2 synth, or adenosine uptake|GI upset/ulcer, dizziness, headache, hemorrhage
+Clopidogrel|Anticoagulant (Adenosine receptor antagonist)|Block ADP receptors, preventing platelet aggregation|GI upset/ulcer, bleeding, agranulocytosis
+Dabigatran extexilate|Anticoagulant (Thrombin Inhibitor)|Inhibits thrombin in coagulation pathway|Bleeding, dyspepsia, allergy
+Dalteparin|Anticoagulant (heparin-like)|Act with anti-thrombin III to inactivate clotting factors|hemorrhage, mild thrombocytopenia, AT III depl
+Diltiazem|Anti-arrhythmic (Ca2+ channel blocker)|Blocks Ca2+ influx at vasculature and pacemakers|Reflex tachycardia, constipation, hypotension
+Dipyramidamole|Anticoagulant (Antiplatelet)|Inhibit phosphodiesterase, TXA2 synth, or adenosine uptake|GI upset/ulcer, dizziness, headache, hemorrhage
+Disopyramide|Anti-arrhythmic (Na+ channel blocker)|Block Na+ and K+ channels, slowing firing, incr threshold|Dryness, mydriasis, cycloplegia, heart failure
+Edoxaban|Anticoagulant (Factor X inhibitor)|Inhibit active factor X in coagulation pathway|Bleeding, back pain, pruritis, allergy
+Eplernone|Diuretic (K+ sparing)|Antagonizes aldosterone receptor|Hyperkalemia
+Epoprostenol|Anticoagulant (Prostanoid receptor agonist)|Binds to prostacyclin site, incr cAMP and decr ADP release|Flushing, hypotension, headache
+Flecainide|Anti-arrhythmic (Na+ channel blocker)|Slowly block Na+ channels, max phase 0 depression|Blurred vision, dizziness, nausea
+Furosemide|Loop Diuretic|Blocks Na+/Cl-/K+ transporter in ascending loop|Alkalosis, trans nerve deafness, deafness, hyperuricemia
+Glycerol|Diuretic (Osmotic)|Filtered through kidneys, increase water excretion|Volume loading, tissue dehydration
+Heparin|Anticoagulant|Act with anti-thrombin III to inactivate clotting factors|Hemorrhage, mild thrombocytopenia, AT III depl
+Hydrochlorothiazide|Thiazide Diuretic|Blocks Na+/Cl- cotransporter in distal tubule|Hyperuricemia, hypokalemia, sulfa sensitivity
+Indapamidine|Thiazide Diuretic|Blocks Na+/Cl- cotransporter in distal tubule|Hyperuricemia, hypokalemia, sulfa sensitivity
+Lidocaine|Anti-arrhythmic (Na+ channel blocker)|Block active and inactive Na+ channels, incr threshold|Sedation, agitation, muscle twitching, convulsions
+Mannitol|Diuretic (Osmotic)|Filtered through kidneys, increase water excretion|Volume loading, tissue dehydration
+Propranolol|Anti-arrhythmic (Beta blocker)|Block B-adrenergic receptors, decr rate and contractility|Bronchospasm, bradycardia and arrest
+Quinidine|Anti-arrhythmic (Na+ channel blocker)|Blocks Na+ channels, slowing firing, incr threshold|Arrhythmia, muscle depolarization, NVD, psychosis
+Rivaroxaban|Anticoagulant (Factor X inhibitor)|Inhibit active factor X in coagulation pathway|Bleeding, back pain, pruritis, allergy
+Sotalol|Anti-arrhythmic (Beta blocker & K+ channel blocker)|Block B-adrenergic receptors and prolonging repolarization|Bronchospasm, thyroid abnormalities, corneal deposits
+Spironolactone|Diuretic (K+ sparing)|Antagonizes aldosterone receptor|Gynecomastia, decr libido, impotence, GIT upset, hyperK
+Streptokinase|Anticoagulant (Thrombolytic/Fibrinolytic)|Activates plasmin to break down fibrin within coagulant|Bleeding - esp intracranial hemorrhage
+Tenecteplase|Anticoagulant (Thrombolytic/Fibrinolytic)|Activates plasmin to break down fibrin within coagulant|Bleeding - esp intracranial hemorrhage
+Ticlopidine|Anticoagulant (Adenosine receptor antagonist)|Block ADP receptors, preventing platelet aggregation|GI upset/ulcer, bleeding, agranulocytosis
+Tinzaparin|Anticoagulant (heparin-like)|Act with anti-thrombin III to inactivate clotting factors|hemorrhage, mild thrombocytopenia, AT III depl
+Tirofiban|Anticoagulant (Glycprotein IIB/IIA receptor antagonist)|Binds to GP IIB/IIA receptors to inhibit platelet aggregation|Bradycardia, pelvic pain, edema, bleeding
+Triamterene|Diuretic (K+ sparing)|Block Na+/K+ exchange by blocking Na+ channels by lumen|Hyperkalemia
+Verapamil|Anti-arrhythmic (Ca2+ channel blocker)|Blocks Ca2+ influx at SA and AV node, decr conduction|Reflex tachycardia, constipation, hypotension
+Warfarin|Anticoagulant (Vitamin K antagonist)|Prevents foirmation of coagulation factors|Hemorrhage, NVD, tertogenic, rashes

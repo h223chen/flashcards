@@ -46,14 +46,19 @@ app.controller('mainCtrl', [
 			var answerloc = randomizer(0,5); //where answer will be placed in choices
 
 			for (var i=0;i<$scope.count;i++){
-				var choices = [];				
+				var choices = [];
+				var ansType = randomizer(0, data[i].length - 1);
+                var choiceType = randomizer(0, data[i].length - 1);
+                while (ansType==choiceType) {
+                    choiceType = randomizer(0, data[i].length - 1);
+                }				
 				for (var j=0; j<5; j++){
-					var index = randomizer(1,data.length); //index of answer in data		
+					var index = randomizer(1, data.length); //index of answer in data
 
 					while (choices.indexOf(index) > -1) {
-						index = randomizer(1,data.length);
+						index = randomizer(1, data.length);
 					}
-					choices[j] = index;
+					choices = data[index].split('|');
 				}
 			
 				var question = {
@@ -67,10 +72,6 @@ app.controller('mainCtrl', [
 			}
 
 			console.log($scope.questions);
-
-			
 		});
-
-		
 	}
 ]);
