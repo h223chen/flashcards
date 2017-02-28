@@ -8,6 +8,7 @@ app.controller('mainCtrl', [
 		console.log("HELLO");
 		$scope.questions = [];
 		$scope.answers = [];
+		$scope.selection = [];
 		$scope.count = 10;
 
 		var randomizer = function(low, high){
@@ -31,7 +32,8 @@ app.controller('mainCtrl', [
 			console.log($scope.answers);
 
 			$http.post('/api/submit', {
-					data: $scope.answers
+					answers: $scope.answers,
+					selection: $scope.selection
 				})
 				.then(function(res) {
 					console.log(res);
@@ -84,6 +86,7 @@ app.controller('mainCtrl', [
 
 				$scope.questions[i] = question;
 				$scope.answers[i] = answerloc;
+				$scope.selection[i] = null;
 			}
 
 			console.log($scope.questions);
