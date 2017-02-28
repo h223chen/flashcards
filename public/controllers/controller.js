@@ -27,6 +27,17 @@ app.controller('mainCtrl', [
 			return score;
 		}
 
+		$scope.submit = function() {
+			console.log($scope.answers);
+
+			$http.post('/api/submit', {
+					data: $scope.answers
+				})
+				.then(function(res) {
+					console.log(res);
+				});
+		}
+
 		$http.get('/api/get/WinterDrugs').then(function(res) {
 			console.log(res);
 			var data = res.data;
@@ -35,8 +46,7 @@ app.controller('mainCtrl', [
 			}
 
 			var firstLine = data[0].split(',');
-			var numColumns = firstLine.length;
-			
+			var numColumns = firstLine.length;			
 			
 			for (var i=1; i< data.length; i++) {
 				var line = data[i].split(',');
@@ -70,7 +80,6 @@ app.controller('mainCtrl', [
 					question: "Question " + qNum + ": Which of the following is the " + colTitles[choiceType] + " that matches the following " + colTitles[ansType] + ": " + data[answerIndex].split('|')[ansType] + "?",
 					answerChoices: choices 
 				};				
-				console.log(question.answerChoices);
 				console.log(answerIndex);
 
 				$scope.questions[i] = question;

@@ -3,6 +3,7 @@
  * Imports
  */
 var express = require('express');
+var bodyParser = require('body-parser');
 var f = require('./global_functions.js');
 var fs = require('fs')
 var app = express();
@@ -14,6 +15,8 @@ var SOURCE_FOLDER = 'source_files/';
 var REFRESH_URL = '/refresh';
 
 app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json());
 
 var sourceFiles = {};
 var init = function() {
@@ -52,6 +55,14 @@ var init = function() {
 };
 
 init();
+
+app.post('/api/submit', function(req, res) {
+	var body = req.body;
+	var query = req.query;
+
+	console.log(req.body);
+	res.send("hello");
+})
 
 app.get('/api/get/:name', function(req, res) {
 	var name = req.params.name;

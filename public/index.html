@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   </head>
   <body>
-    <div ng-controller="mainCtrl">
+    <div ng-form="mainForm" ng-controller="mainCtrl">
       <ul>
         <li ng-repeat="question in questions">
             <strong class="question">{{question.question}}</strong>
@@ -21,6 +21,7 @@
             </ul>
         </li>
       </ul>
+      <button ng-click="submit()">Submit!</button>
     </div>
   </body>
 </html>
