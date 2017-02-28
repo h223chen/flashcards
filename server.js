@@ -60,26 +60,20 @@ app.post('/api/submit', function(req, res) {
 	var body = req.body;
 	var query = req.query;
 
-<<<<<<< .mine
 	//write comparison here
 	var score = [];
-		for (var i=0;i<req.body.answers;i++){
-			if (req.body.selection[i]==req.body.answers[i]){
-				score[i]=true;
-			}
-			else{
-				score[i]=false;
-			}
-		}
-		return score;
-
-	console.log(req.body);
-||||||| .r23
-	console.log(req.body);
-=======
+	console.log(req.body.selection);
 	console.log(req.body.answers);
->>>>>>> .r24
-	res.send("hello");
+	for (var i=0; i<req.body.answers.length; i++) {
+		if (req.body.selection[i] == req.body.answers[i]) {
+			score[i] = true;
+		} else {
+			score[i] = false;
+		}
+	}
+
+	console.log(score);
+	res.send(score);
 })
 
 app.get('/api/get/:name', function(req, res) {

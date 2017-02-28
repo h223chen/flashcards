@@ -7,8 +7,11 @@
   </head>
   <body>
     <div ng-form="mainForm" ng-controller="mainCtrl">
-      <ul>
+
+      <ul style="list-style:none">
         <li ng-repeat="question in questions">
+            <b ng-show='correct[$index] && submitClicked'>&#10004</b>
+            <b ng-show='!correct[$index] && submitClicked'>&#10007</b>
             <strong class="question">{{question.question}}</strong>
 
             <ul style="list-style: none" id="question_{{$parent.$index}}">

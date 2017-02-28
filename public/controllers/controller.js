@@ -10,12 +10,14 @@ app.controller('mainCtrl', [
 		$scope.answers = [];
 		$scope.selection = [];
 		$scope.count = 10;
+		$scope.submitClicked = false;
 
 		var randomizer = function(low, high){
 			return Math.trunc((Math.random()*(high-low))+low);
 		}
 
 		$scope.submit = function() {
+			$scope.submitClicked = true;
 			console.log($scope.answers);
 
 			$http.post('/api/submit', {
@@ -23,7 +25,8 @@ app.controller('mainCtrl', [
 					selection: $scope.selection
 				})
 				.then(function(res) {
-					console.log(res);
+					console.log(res.data);
+					$scope.correct = res.data;
 				});
 		}
 
