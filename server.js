@@ -60,7 +60,7 @@ app.post('/api/submit', function(req, res) {
 	var body = req.body;
 	var query = req.query;
 
-	console.log(req.body);
+	console.log(req.body.answers);
 	res.send("hello");
 })
 
