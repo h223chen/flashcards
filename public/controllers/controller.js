@@ -15,19 +15,6 @@ app.controller('mainCtrl', [
 			return Math.trunc((Math.random()*(high-low))+low);
 		}
 
-		var checkAns = function(){
-			var score = [];
-			for (var i=0;i<selections;i++){
-				if (input[i]==$scope.answers[i]){
-					score[i]=true;
-				}
-				else{
-					score[i]=false;
-				}
-			}
-			return score;
-		}
-
 		$scope.submit = function() {
 			console.log($scope.answers);
 
