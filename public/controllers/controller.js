@@ -14,10 +14,10 @@ app.controller('mainCtrl', [
 			return Math.trunc((Math.random()*(high-low))+low);
 		}
 
-		var checkAns = function(submittedAns){
+		var checkAns = function(){
 			var score = [];
 			for (var i=0;i<selections;i++){
-				if (input[i]==answers[i]){
+				if (input[i]==$scope.answers[i]){
 					score[i]=true;
 				}
 				else{
