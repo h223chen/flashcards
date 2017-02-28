@@ -25,8 +25,8 @@ app.controller('mainCtrl', [
 					selection: $scope.selection
 				})
 				.then(function(res) {
-					console.log(res.data);
-					$scope.correct = res.data;
+					console.log(res.data.results);
+					$scope.correct = res.data.results;
 				});
 		}
 

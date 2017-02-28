@@ -73,7 +73,7 @@ app.post('/api/submit', function(req, res) {
 	}
 
 	console.log(score);
-	res.send(score);
+	res.json({results: score});
 })
 
 app.get('/api/get/:name', function(req, res) {
