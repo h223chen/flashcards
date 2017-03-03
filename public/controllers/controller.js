@@ -62,10 +62,10 @@ app.controller('mainCtrl', [
 					answerString = line[choiceType];
 				}
 				
-				//Keep questionIndex information to generate question
+				// Keep questionIndex information to generate question
 				var answerDrugName = selectedName; //answer location in drug name array
 
-				//Generate choices
+				// Generate choices
 				for (var j=0; j<5; j++) { //loop to get 5 answer choices
 					var choice = "";
 					if (answerIndex==j) { // this choice is the correct answer
@@ -80,7 +80,6 @@ app.controller('mainCtrl', [
 					}
 					
 					while (choices.indexOf(choice) > -1) {
-						console.log("TEST");
 						var index = randomizer(1, data.length-1);
 						choice = data[index].split(COLUMN_DELIMITER)[choiceType];
 					}
@@ -100,14 +99,13 @@ app.controller('mainCtrl', [
 			}
 		}
 
-		$http.get('/api/get/OcularDrugs').then(function(res) {
-			console.log(res);
+		$http.get('/api/get/OcularDrugs').then(function(res) {			
 			var data = res.data;
 			if (data.length <= 0) {
 				return;
 			}
 
-			 handleGetResponseData(data);
+			handleGetResponseData(data);
 
 			console.log($scope.questions);
 			console.log($scope.answers);
