@@ -71,7 +71,7 @@ app.controller('mainCtrl', [
 				for (var j=0; j<5; j++){ //loop to get 5 answer choices
 					if (answerloc==j){
 						if (choiceType==0){
-							ansString = data[answerIndex]
+							ansString = data[answerIndex].split('|')[choiceType].split('?')[answerDrugName];
 						}
 					}
 					while (choices.indexOf(ansString) > -1) {
