@@ -36,12 +36,11 @@ app.controller('mainCtrl', [
 		var handleGetResponseData = function(data) {			
 			var columnTitles = data[0].split(COLUMN_DELIMITER);
 			console.log("data: " + data);
-			for (var i=1; i<$scope.count; i++) { // Generate questions
-				console.log(i);
+			for (var i=1; i<=$scope.count; i++) { // Generate questions
 				var choices = [];
 				
 				var numColumns = data[i].split(COLUMN_DELIMITER).length; // number of columns in document
-								var questionType = randomizer(0, numColumns); //Determines reference column of description in question
+				var questionType = randomizer(0, numColumns); //Determines reference column of description in question
                 var choiceType = randomizer(0, numColumns); //Determines reference column of choices                
                 var answerIndex = randomizer(0,5); //where answer will be placed in choices
                 
@@ -50,34 +49,26 @@ app.controller('mainCtrl', [
                 }
 
                 // Select answer
-                var questionIndex = randomizer(1, data.length-1); // index of which question to ask
+                var questionIndex = randomizer(1, data.length-1); // index of which quality to question
                 var line = data[questionIndex].split(COLUMN_DELIMITER);
                 var answerString = "";
                 
-				if (choiceType == 0) {
+				if (questionType == 0) {
 					var drugNames = line[choiceType].split(EXTRA_DELIMITER);
-					var selectedName = randomizer(0, drugNames.length - 1);
+					var selectedName = randomizer(0, drugNames.length-1);
 					answerString = drugNames[selectedName];
 				} else {
 					answerString = line[choiceType];
 				}
-				
-				// Keep questionIndex information to generate question
-				var answerDrugName = selectedName; //answer location in drug name array
 
 				// Generate choices
-				for (var j=0; j<5; j++) { //loop to get 5 answer choices
+				choices[answerIndex] = answerString; //enter correct answer in proper location
+				for (var j=0; j<5; j++) { //loop to get the 4 other answer choices
 					var choice = "";
-					if (answerIndex==j) { // this choice is the correct answer
-						if (choiceType === 0){
-							choice = answerString;
-						} else {
-							choice = line[choiceType];
-						}
-					} else {
-						var index = randomizer(1, data.length-1);
-						choice = data[index].split(COLUMN_DELIMITER)[choiceType];
-					}
+					if (answerIndex==j) { //skips this index already containing the answer
+						continue;}
+					var index = randomizer(1, data.length-1);
+					choice = data[index].split(COLUMN_DELIMITER)[choiceType];
 					
 					while (choices.indexOf(choice) > -1) {
 						var index = randomizer(1, data.length-1);
@@ -88,9 +79,12 @@ app.controller('mainCtrl', [
 				}
 			
 				var question = {
-					question: "Question " + (i) + ": Which of the following is the " + columnTitles[choiceType] + " that matches the following " + columnTitles[questionType] + ": " + data[answerIndex].split(COLUMN_DELIMITER)[questionType] + "?",
+					question: "Question " + (i) + ": Which of the following is the " + columnTitles[choiceType] + " that matches the following " + columnTitles[questionType] + ": " + data[questionIndex].split(COLUMN_DELIMITER)[questionType] + "?",
 					answerChoices: choices 
-				};				
+				};
+				if (questionType==0){
+					question['question']= "Question " + (i) + ": Which of the following is the " + columnTitles[choiceType] + " that matches the following " + columnTitles[questionType] + ": " + data[questionIndex].split(COLUMN_DELIMITER)[questionType].split(EXTRA_DELIMITER)[selectedName] + "?"
+				}	
 				console.log(answerIndex);
 
 				$scope.questions[i-1] = question;
