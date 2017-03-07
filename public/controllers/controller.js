@@ -8,6 +8,7 @@ app.controller('mainCtrl', [
 		console.log("HELLO");
 		$scope.questions = [];
 		$scope.answers = [];
+		$scope.answersList = [];
 		$scope.selection = [];
 		$scope.count = 10;
 		$scope.submitClicked = false;
@@ -19,23 +20,24 @@ app.controller('mainCtrl', [
 			return Math.trunc((Math.random()*(high-low))+low);
 		}
 
+		var generateQuestionString = function(index, answerType, questionType, questionTerm) {
+			return "Question " + index + ": Which of the following is the " + answerType + " that matches the following " + questionType + ": " + questionTerm + "?";
+		}
+
 		$scope.submit = function() {
 			$scope.submitClicked = true;
-			console.log($scope.answers);
 
 			$http.post('/api/submit', {
 					answers: $scope.answers,
 					selection: $scope.selection
 				})
 				.then(function(res) {
-					console.log(res.data.results);
 					$scope.correct = res.data.results;
 				});
 		}
 		
-		var handleGetResponseData = function(data) {			
+		var init = function(data) {
 			var columnTitles = data[0].split(COLUMN_DELIMITER);
-			console.log("data: " + data);
 			for (var i=1; i<=$scope.count; i++) { // Generate questions
 				var choices = [];
 				
@@ -53,6 +55,7 @@ app.controller('mainCtrl', [
                 var line = data[questionIndex].split(COLUMN_DELIMITER);
                 var answerString = "";
                 
+                
 				if (questionType == 0) {
 					var drugNames = line[choiceType].split(EXTRA_DELIMITER);
 					var selectedName = randomizer(0, drugNames.length-1);
@@ -61,31 +64,44 @@ app.controller('mainCtrl', [
 					answerString = line[choiceType];
 				}
 
+
 				// Generate choices
 				choices[answerIndex] = answerString; //enter correct answer in proper location
 				for (var j=0; j<5; j++) { //loop to get the 4 other answer choices
 					var choice = "";
 					if (answerIndex==j) { //skips this index already containing the answer
-						continue;}
-					var index = randomizer(1, data.length-1);
-					choice = data[index].split(COLUMN_DELIMITER)[choiceType];
-					
-					while (choices.indexOf(choice) > -1) {
+						continue;
+					}
+
+					do {
 						var index = randomizer(1, data.length-1);
 						choice = data[index].split(COLUMN_DELIMITER)[choiceType];
-					}
+						
+						if (choiceType == 0) {
+							var drugNames = choice.split(EXTRA_DELIMITER);
+							$scope.answersList[i-1] = drugNames;
+						} else {
+							$scope.answersList[i-1] = [choice];
+						}
+					} while (choices.indexOf(choice) > -1);
 					
-					choices[j] = choice;
+					var subChoice = "";
+					do {
+						subChoice = ($scope.answersList[i-1].length > 1) 
+								  ? $scope.answersList[i-1][randomizer(0, $scope.answersList[i-1].length)]
+								  : $scope.answersList[i-1][0];						
+					} while (choices.indexOf(subChoice) > -1);
+					
+					choices[j] = subChoice;
+					
 				}
 			
 				var question = {
-					question: "Question " + (i) + ": Which of the following is the " + columnTitles[choiceType] + " that matches the following " + columnTitles[questionType] + ": " + data[questionIndex].split(COLUMN_DELIMITER)[questionType] + "?",
+					question: questionType == 0 
+						? generateQuestionString(i, columnTitles[choiceType], columnTitles[questionType], data[questionIndex].split(COLUMN_DELIMITER)[questionType].split(EXTRA_DELIMITER)[selectedName])
+						: generateQuestionString(i, columnTitles[choiceType], columnTitles[questionType], data[questionIndex].split(COLUMN_DELIMITER)[questionType]),
 					answerChoices: choices 
 				};
-				if (questionType==0){
-					question['question']= "Question " + (i) + ": Which of the following is the " + columnTitles[choiceType] + " that matches the following " + columnTitles[questionType] + ": " + data[questionIndex].split(COLUMN_DELIMITER)[questionType].split(EXTRA_DELIMITER)[selectedName] + "?"
-				}	
-				console.log(answerIndex);
 
 				$scope.questions[i-1] = question;
 				$scope.answers[i-1] = answerIndex;
@@ -99,10 +115,8 @@ app.controller('mainCtrl', [
 				return;
 			}
 
-			handleGetResponseData(data);
-
-			console.log($scope.questions);
-			console.log($scope.answers);
+			init(data);
+			console.log($scope.answersList);
 		});
 	}
 ]);
