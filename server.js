@@ -36,8 +36,7 @@ var init = function() {
 						if (err) {
 							f.error(err);
 							return err;
-						}
-						
+						}						
 
 						lines = data.split('\n');
 						sourceFiles[file] = lines;
@@ -56,28 +55,34 @@ var init = function() {
 
 init();
 
+var checkAnswers = function(selection, answers) {
+	if (selection == null) { return false; }
+	
+	for (var i=0; i<answers.length; i++) {
+		f.info("selection " + i + ": " + selection.trim())
+		f.info("answers " + i + ": " + answers[i].trim());
+		if (selection.trim() === answers[i].trim()) {
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 app.post('/api/submit', function(req, res) {
 	var body = req.body;
 	var query = req.query;
 
 	//write comparison here
-	var score = [];
-	console.log(req.body.selection);
-	console.log(req.body.answers);
+	var results = [];
 	for (var i=0; i<req.body.answers.length; i++) {
 		var selection = req.body.selection[i];
-		var answerList = req.body.answers[i];
-		f.info("selection " + i + ": " + selection)
-		f.info("answers " + i + ": " + answerList);
-		if (req.body.answers[i].indexOf(req.body.selection[i]) > -1) {
-			score[i] = true;
-		} else {
-			score[i] = false;
-		}
+		var answerList = req.body.answers[i];		
+		results[i] = checkAnswers(selection, answerList);	
 	}
 
-	console.log(score);
-	res.json({results: score});
+	console.log(results);
+	res.json({results: results});
 })
 
 app.get('/api/get/:name', function(req, res) {
