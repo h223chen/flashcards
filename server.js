@@ -65,7 +65,11 @@ app.post('/api/submit', function(req, res) {
 	console.log(req.body.selection);
 	console.log(req.body.answers);
 	for (var i=0; i<req.body.answers.length; i++) {
-		if (req.body.selection[i] == req.body.answers[i]) {
+		var selection = req.body.selection[i];
+		var answerList = req.body.answers[i];
+		f.info("selection " + i + ": " + selection)
+		f.info("answers " + i + ": " + answerList);
+		if (req.body.answers[i].indexOf(req.body.selection[i]) > -1) {
 			score[i] = true;
 		} else {
 			score[i] = false;

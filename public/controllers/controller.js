@@ -23,14 +23,28 @@ app.controller('mainCtrl', [
 		var generateQuestionString = function(index, answerType, questionType, questionTerm) {
 			return "Question " + index + ": Which of the following is the " + answerType + " that matches the following " + questionType + ": " + questionTerm + "?";
 		}
+//		
+//		var generateQuestionChoice = function(columnIndex, line) {
+//			var choiceString = "";
+//			
+//			if (columnIndex == 0) {
+//				var subChoices = line[columnIndex].split(EXTRA_DELIMITER);
+//				var subChoiceIndex = randomizer(0, subChoices.length-1);
+//				choiceString = subChoices[subChoiceIndex]
+//			} else {
+//				choiceString = line[columnIndex];
+//			}
+//			return choiceString;
+//		}
 
 		$scope.submit = function() {
 			$scope.submitClicked = true;
-
-			$http.post('/api/submit', {
-					answers: $scope.answers,
-					selection: $scope.selection
-				})
+			var payload = {
+				answers: $scope.answersList,
+				selection: $scope.selection
+			}
+			
+			$http.post('/api/submit', payload)
 				.then(function(res) {
 					$scope.correct = res.data.results;
 				});
@@ -55,50 +69,53 @@ app.controller('mainCtrl', [
                 var line = data[questionIndex].split(COLUMN_DELIMITER);
                 var answerString = "";
                 
-                
-				if (questionType == 0) {
-					var drugNames = line[choiceType].split(EXTRA_DELIMITER);
-					var selectedName = randomizer(0, drugNames.length-1);
-					answerString = drugNames[selectedName];
+                // Generate answer string
+				if (choiceType == 0) {
+					var subQuestions = line[choiceType].split(EXTRA_DELIMITER);
+					var subQuestionIndex = randomizer(0, subQuestions.length-1);
+					answerString = subQuestions[subQuestionIndex];
+					$scope.answersList[i-1] = subQuestions;
 				} else {
 					answerString = line[choiceType];
+					$scope.answersList[i-1] = [answerString];
 				}
 
 
 				// Generate choices
 				choices[answerIndex] = answerString; //enter correct answer in proper location
-				for (var j=0; j<5; j++) { //loop to get the 4 other answer choices
-					var choice = "";
+				for (var j=0; j<5; j++) { //loop to get the 4 other answer choices					
 					if (answerIndex==j) { //skips this index already containing the answer
 						continue;
 					}
+					
+					var choice = "";
 
 					do {
 						var index = randomizer(1, data.length-1);
 						choice = data[index].split(COLUMN_DELIMITER)[choiceType];
-						
+						var subChoice = "";
 						if (choiceType == 0) {
-							var drugNames = choice.split(EXTRA_DELIMITER);
-							$scope.answersList[i-1] = drugNames;
+							var subChoices = choice.split(EXTRA_DELIMITER);
+							
+							if (choices.indexOf(choice) > -1) { break; }
+							do {								
+								subChoice = (subChoices.length > 1)
+										  ? subChoices[randomizer(0, subChoices.length)]
+										  : choice;						
+							} while (choices.indexOf(subChoice) > -1);
 						} else {
-							$scope.answersList[i-1] = [choice];
-						}
+							subChoice = choice;
+						} 
 					} while (choices.indexOf(choice) > -1);
 					
-					var subChoice = "";
-					do {
-						subChoice = ($scope.answersList[i-1].length > 1) 
-								  ? $scope.answersList[i-1][randomizer(0, $scope.answersList[i-1].length)]
-								  : $scope.answersList[i-1][0];						
-					} while (choices.indexOf(subChoice) > -1);
-					
+										
 					choices[j] = subChoice;
 					
 				}
 			
 				var question = {
 					question: questionType == 0 
-						? generateQuestionString(i, columnTitles[choiceType], columnTitles[questionType], data[questionIndex].split(COLUMN_DELIMITER)[questionType].split(EXTRA_DELIMITER)[selectedName])
+						? generateQuestionString(i, columnTitles[choiceType], columnTitles[questionType], data[questionIndex].split(COLUMN_DELIMITER)[questionType].split(EXTRA_DELIMITER)[subQuestionIndex])
 						: generateQuestionString(i, columnTitles[choiceType], columnTitles[questionType], data[questionIndex].split(COLUMN_DELIMITER)[questionType]),
 					answerChoices: choices 
 				};
