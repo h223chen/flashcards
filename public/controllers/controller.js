@@ -1,11 +1,13 @@
 "use strict";
-var app = angular.module('app', []);
+var app = angular.module('app', ['underscore']);
 
 app.controller('mainCtrl', [
 	'$scope',
 	'$http',
-	function($scope, $http) {
+	'_',
+	function($scope, $http, _) {
 		console.log("HELLO");
+		console.log(_.VERSION);
 		$scope.questions = [];
 		$scope.answers = [];
 		$scope.answersList = [];
@@ -97,8 +99,9 @@ app.controller('mainCtrl', [
 						if (choiceType == 0) {
 							var subChoices = choice.split(EXTRA_DELIMITER);
 							
-							if (choices.indexOf(choice) > -1) { break; }
-							do {								
+							if (_.contains(choices, choice) || _.difference(subChoices, choices) == 0) { continue; }
+							var count = 0;
+							do {										
 								subChoice = (subChoices.length > 1)
 										  ? subChoices[randomizer(0, subChoices.length)]
 										  : choice;						
