@@ -58,6 +58,8 @@ app.controller('mainCtrl', [
 				var choices = [];
 				
 				var numColumns = data[i].split(COLUMN_DELIMITER).length; // number of columns in document
+				//var questionType = 1;
+				//var choiceType = 0;
 				var questionType = randomizer(0, numColumns); //Determines reference column of description in question
                 var choiceType = randomizer(0, numColumns); //Determines reference column of choices                
                 var answerIndex = randomizer(0,5); //where answer will be placed in choices
