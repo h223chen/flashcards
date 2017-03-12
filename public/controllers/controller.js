@@ -58,9 +58,9 @@ app.controller('mainCtrl', [
 				var choices = [];
 				
 				var numColumns = data[i].split(COLUMN_DELIMITER).length; // number of columns in document
-				//var questionType = 1;
+				var questionType = 0;
 				//var choiceType = 0;
-				var questionType = randomizer(0, numColumns); //Determines reference column of description in question
+				//var questionType = randomizer(0, numColumns); //Determines reference column of description in question
                 var choiceType = randomizer(0, numColumns); //Determines reference column of choices                
                 var answerIndex = randomizer(0,5); //where answer will be placed in choices
                 
@@ -118,11 +118,14 @@ app.controller('mainCtrl', [
 					
 				}
 			
+				//selects drug name in list for question
+				var questionDrugs = data[questionIndex].split(COLUMN_DELIMITER)[questionType].split(EXTRA_DELIMITER);
+				var druginQuestion = questionDrugs[randomizer(0, questionDrugs.length-1)];
 				var question = {
 					question: questionType == 0 
-						? generateQuestionString(i, columnTitles[choiceType], columnTitles[questionType], data[questionIndex].split(COLUMN_DELIMITER)[questionType].split(EXTRA_DELIMITER)[subQuestionIndex])
+						? generateQuestionString(i, columnTitles[choiceType], columnTitles[questionType], druginQuestion)
 						: generateQuestionString(i, columnTitles[choiceType], columnTitles[questionType], data[questionIndex].split(COLUMN_DELIMITER)[questionType]),
-					answerChoices: choices 
+					answerChoices: choices
 				};
 
 				$scope.questions[i-1] = question;
